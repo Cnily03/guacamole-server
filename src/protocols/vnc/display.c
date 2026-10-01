@@ -265,6 +265,9 @@ void* guac_vnc_display_set_owner_size(guac_user* owner, void* data) {
 
 void guac_vnc_display_set_size(rfbClient* client, int requested_width, int requested_height) {
 
+    if (client == NULL)
+        return;
+
     /* Get the VNC client */
     guac_client* gc = rfbClientGetClientData(client, GUAC_VNC_CLIENT_KEY);
     guac_vnc_client* vnc_client = (guac_vnc_client*) gc->data;
